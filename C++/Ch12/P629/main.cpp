@@ -12,7 +12,7 @@ long getFileSize(ifstream &fin)
 // 예제 12-12 파일 크기 알아내기
 int main()
 {
-	const char *file = "/Users/gasap/Desktop/Coding_study/c_c++/C++/Ch12/system.ini";
+	const char *file = "/Users/gasap/Desktop/Coding_study/c_c++/C++/Ch12/student.txt";
 
 	ifstream fin(file);
 	if (!fin)
