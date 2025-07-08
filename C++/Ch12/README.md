@@ -10,6 +10,7 @@
 [7. 스트림 상태 검사](#7-스트림-상태-검사)<br>
 [8. 임의 접근](#8-임의-접근)
 ***
++ ***25년 7월 8일***
 ## 1. 텍스트 파일과 바이너리 파일<br>
 <img width="960" alt="스크린샷 2025-07-02 오전 8 37 13" src="https://github.com/user-attachments/assets/9514208b-27ec-4f25-886b-267adbf4f89c" />
 <img width="975" alt="스크린샷 2025-07-02 오전 8 37 34" src="https://github.com/user-attachments/assets/e5a1c547-ec36-4051-bc09-208655a4d3da" />
@@ -26,6 +27,7 @@
 <img width="896" alt="스크린샷 2025-07-02 오전 8 39 31" src="https://github.com/user-attachments/assets/bf464308-73ac-48c7-975c-ef100e42910e" />
 
 ## 3. <<와 >> 연산자를 이용한 간단한 텍스트 파일 입출력<br>
+예제) P597, P598, P600<br>
 <img width="911" alt="스크린샷 2025-07-02 오전 8 39 54" src="https://github.com/user-attachments/assets/8ef1abf9-b190-4d41-86a2-317eb86131c7" />
 
 ## 4. 파일 모드<br>
@@ -33,22 +35,26 @@
 <img width="823" alt="스크린샷 2025-07-02 오전 8 40 24" src="https://github.com/user-attachments/assets/e7fd9c2a-8502-4ccd-ba96-fc02e042e4a9" />
 
 ## 5. 멤버 함수를 이용한 텍스트 I/O<br>
+예제) P605, P609, P610, P612<br>
 <img width="870" alt="스크린샷 2025-07-02 오전 8 41 11" src="https://github.com/user-attachments/assets/586b32a7-e82a-455c-9237-0ab737ef70b4" />
 <img width="780" alt="스크린샷 2025-07-02 오전 8 41 23" src="https://github.com/user-attachments/assets/b40a2e59-1d29-4335-a285-e14369cdef17" />
 <img width="762" alt="스크린샷 2025-07-02 오전 8 42 07" src="https://github.com/user-attachments/assets/7593aa62-ed52-4bde-848d-a00666b91b42" />
 <img width="890" alt="스크린샷 2025-07-02 오전 8 42 27" src="https://github.com/user-attachments/assets/6107fe15-78c2-4456-892a-f606e8b5f68b" />
 
 ## 6. 바이너리 I/O<br>
+예제) P614, P616, P618, P619 <br>
 <img width="918" alt="스크린샷 2025-07-02 오전 8 42 40" src="https://github.com/user-attachments/assets/7aef7a75-9074-442c-8a0c-2a6d292e2a55" />
 <img width="876" alt="스크린샷 2025-07-02 오전 8 43 14" src="https://github.com/user-attachments/assets/48118031-1fb7-40bd-b0ef-b567494b3b68" />
 <img width="878" alt="스크린샷 2025-07-02 오전 8 43 29" src="https://github.com/user-attachments/assets/b3348caf-8353-4fc2-a855-b0620d6e3918" />
 <img width="878" alt="스크린샷 2025-07-02 오전 8 43 37" src="https://github.com/user-attachments/assets/dccb52e3-8923-4913-857e-1aca7400690f" />
 
 ## 7. 스트림 상태 검사<br>
+예제) P623 <br>
 <img width="917" alt="스크린샷 2025-07-02 오전 8 43 50" src="https://github.com/user-attachments/assets/c6c66f18-264f-41e6-9b80-dd7b3659de5a" />
 <img width="902" alt="스크린샷 2025-07-02 오전 8 44 01" src="https://github.com/user-attachments/assets/d50405f4-2ac7-4b68-a888-3af09d5bdd16" />
 
 ## 8. 임의 접근<br>
+예제) P629 <br>
 <img width="831" alt="스크린샷 2025-07-02 오전 8 44 17" src="https://github.com/user-attachments/assets/f3ecccc0-7cd8-417a-91be-fabc54469283" />
 <img width="875" alt="스크린샷 2025-07-02 오전 8 44 27" src="https://github.com/user-attachments/assets/869d7c2e-e92d-40c5-9d99-3fcd38f15f8c" />
 <img width="785" alt="스크린샷 2025-07-02 오전 8 55 30" src="https://github.com/user-attachments/assets/feca0f53-e0dd-4ced-bfa0-daaf78420222" />
