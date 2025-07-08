@@ -1,0 +1,15 @@
+{
+    "files.associations": {
+        "*.h": "c",
+        "*.hpp": "cpp",
+        "*.cpp": "cpp",
+        "algorithm": "cpp",
+        "memory": "cpp",
+        "istream": "cpp",
+        "cstdio": "cpp",
+        "ios": "cpp",
+        "fstream": "cpp",
+        "locale": "cpp",
+        "iostream": "cpp"
+    }
+}

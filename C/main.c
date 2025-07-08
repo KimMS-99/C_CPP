@@ -50,7 +50,7 @@ int main(void)
     
     int b = a, c = a + 20;
     double da = 3.5;
-    char ch = 'A';
+    char ch = 'A';
     
     printf("변수 a의 값 : %d\n", a);
     printf("변수 b의 값 : %d\n", b);
