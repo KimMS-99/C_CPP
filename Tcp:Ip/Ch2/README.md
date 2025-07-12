@@ -8,7 +8,7 @@
 
 ## 1. 소켓의 프로토콜과 그에 따른 데이터 전송 특성
 
-### 프로토콜의 이해와 소켓의 생성
+### ⦁ 프로토콜의 이해와 소켓의 생성
 
 #### - 프로토콜이란?
 
@@ -27,7 +27,7 @@ int socket(int domainm, int type, int protocol);
 // 매개변수 domain, type, procotol이 모두 프로토콜 정보와 관련이 있다.
 ```
 
-### 프로토콜 체계(Protocol Family)
+### ⦁ 프로토콜 체계(Protocol Family)
 
 #### - 프로토콜 체계
 
@@ -43,7 +43,7 @@ int socket(int domainm, int type, int protocol);
 | PF_IPX | IPX 노벨 프로토콜 체계
 
 
-### 소켓의 타입(Type)
+### ⦁ 소켓의 타입(Type)
 
 #### - 소켓의 타입
 
@@ -55,7 +55,7 @@ int socket(int domainm, int type, int protocol);
 + 연결 지향정 소켓 타입
 + 비 연결 지향형 소켓 타입
 
-### 두 타입의 소켓
+### ⦁ 두 타입의 소켓
 
 #### - 연결지향형 소켓(SOCK_STREAM)의 데이터 전송특성
 
@@ -70,7 +70,7 @@ int socket(int domainm, int type, int protocol);
 + 데이터의 경계가 존재한다.
 + 한번에 전송할 수 있는 데이터의 크기가 제한된다.
 
-### 프로토콜의 최종 선택
+### ⦁ 프로토콜의 최종 선택
 
 + IPv4 인터넷 프로토콜 체계에서 동작하는 연결지향형 데이터 전송 소켓
 ```c
