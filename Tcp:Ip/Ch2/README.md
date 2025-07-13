@@ -85,3 +85,24 @@ int udp_socket = socket(PF_INET, SOCK_DGRAM, IPPROTO_UDP);
 ```
 
 + 첫 번째, 두 번째 인자로 전달된 정보를 통해서 소켓의 프로토콜이 사실상 결정되기 때문에 세 번째 인자로 0을 전달해도 된다.
+
+### ⦁ 연결지향형 소켓 TCP 소켓의 예
+
+`tcp_client.c`코드와 `tcp_server.c 코드
+전송되는 데이터의 경계(boundary)가 존재하지 않음을 확인하자.
+
+- **실행 결과**
+```bash
+# tcp_server.c
+ubuntug@ubuntug:~/c_c++/Tcp:Ip/Ch2$ gcc tcp_server.c -o tcp_server
+ubuntug@ubuntug:~/c_c++/Tcp:Ip/Ch2$ ./tcp_server 5000
+
+# tcp_client.c
+ubuntug@ubuntug:~/c_c++/Tcp:Ip/Ch2$ gcc tcp_client.c -o tcp_client
+ubuntug@ubuntug:~/c_c++/Tcp:Ip/Ch2$ ./tcp_client 
+Usage : ./tcp_client <IP> <port>
+ubuntug@ubuntug:~/c_c++/Tcp:Ip/Ch2$ ./tcp_client 127.0.0.1 5000
+Message from server: Hello World! 
+Function read call count: 13 
+ubuntug@ubuntug:~/c_c++/Tcp:Ip/Ch2$ 
+```
