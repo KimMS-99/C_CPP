@@ -16,7 +16,7 @@
 - PORT번호로 16비트로 표현, 따라서 그 값은 0 이상 65535 이하
 - 0~1023은 잘 알려진 PORT(Well-known PORT)라 해서 이미 용도가 결정되어 있다.
 
-![PORT번호에 의한 소켓의 구분과정](../docs/port_socket.png)
+![PORT번호에 의한 소켓의 구분과정](../docs/Img/port_socket.png)
 
 ## 2. 주소정보의 표현
 
@@ -94,7 +94,7 @@ struct sockaddr
 
 ### ⦁ CPU에 따라 달라지는 정수의 표현
 
-![cpu에 따라 달라지는 정수의 표현](../docs/cpu_%20repr_int.png)
+![cpu에 따라 달라지는 정수의 표현](../docs/Img/cpu_%20repr_int.png)
 
 ### ⦁ 바이트 순서(Order)와 네트워크 바이트 순서
 
@@ -104,9 +104,9 @@ struct sockaddr
 #### - 리틀 엔디안(Little Endian)
 - 상위 바이트의 값을 큰 번지수에 저장
 
-![데이터 송수신 과정에서의 문제](../docs/data_problem.png)
-![빅 엔디안 모델](../docs/big_endian.png)
-![리틀 엔디안 모델](../docs/little_endian.png)
+![데이터 송수신 과정에서의 문제](../docs/Img/data_problem.png)
+![빅 엔디안 모델](../docs/Img/big_endian.png)
+![리틀 엔디안 모델](../docs/Img/little_endian.png)
 
 #### - 호스트 바이트 순서
 - CPU별 데이터 저장방식을 의미함
