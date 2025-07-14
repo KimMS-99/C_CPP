@@ -209,6 +209,7 @@ int main(int argc, char *argv[])
 						shutdown(clnt_sock,SHUT_WR);
 
 		}
+		free(client_info);
 		return 0;
 }
 
