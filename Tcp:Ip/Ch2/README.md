@@ -91,7 +91,7 @@ int udp_socket = socket(PF_INET, SOCK_DGRAM, IPPROTO_UDP);
 `tcp_client.c`코드와 `tcp_server.c 코드
 전송되는 데이터의 경계(boundary)가 존재하지 않음을 확인하자.
 
-- **실행 결과**
+- `tcp_server.c`와 `tcp_client.c` 실행 결과
 ```bash
 # tcp_server.c
 ubuntug@ubuntug:~/c_c++/Tcp:Ip/Ch2$ gcc tcp_server.c -o tcp_server

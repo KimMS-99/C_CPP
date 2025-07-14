@@ -4,6 +4,7 @@
 1. [소켓에 할당되는 IP주소와 PORT번호](#1-소켓에-할당되는-ip주소와-port번호)
 2. [주소정보의 표현](#2-주소정보의-표현)
 3. [네트워크 바이트 순서와 인터넷 주소 변환](#3-네트워크-바이트-순서와-인터넷-주소-변환)
+4. [인터넷 주소의 초기화와 할당](#4-인터넷-주소의-초기화와-할당)
 
 ## 1. 소켓에 할당되는 IP주소와 PORT번호
 
@@ -91,12 +92,46 @@ struct sockaddr
 
 ## 3. 네트워크 바이트 순서와 인터넷 주소 변환
 
+### ⦁ CPU에 따라 달라지는 정수의 표현
 
+![cpu에 따라 달라지는 정수의 표현](../docs/cpu_%20repr_int.png)
 
+### ⦁ 바이트 순서(Order)와 네트워크 바이트 순서
 
+#### - 빅 엔디안(Big Endian)
+- 상위 바이트의 값을 작은 번지수에 저장
 
-endian_conv.c
+#### - 리틀 엔디안(Little Endian)
+- 상위 바이트의 값을 큰 번지수에 저장
 
+![데이터 송수신 과정에서의 문제](../docs/data_problem.png)
+![빅 엔디안 모델](../docs/big_endian.png)
+![리틀 엔디안 모델](../docs/little_endian.png)
+
+#### - 호스트 바이트 순서
+- CPU별 데이터 저장방식을 의미함
+
+#### - 네트워크 바이트 순서
+- 통일된 데이터 송수신 기준을 의미함
+- 빅 엔디안이 기준.
+
+### ⦁ 바이트 순서의 변환
+
+- **바이트 변환함수**
+```c
+unsigned short htons(unsigned short);
+unsigned short ntohs(unsigned short);
+unsigned long htonl(unsigned long);
+unsigned long ntohl(unsigned long);
+```
+- htons에서 h는 호스트(host) 바이트 순서를 의미
+- htons에서 n은 네트워크(network) 바이트 순서를 의미
+- htons에서 s는 자료형 short를 의미
+- htiol에서 l은 자료형 l을 의미
+
+### ⦁ 바이트 변환의 예
+
+- `endian_conv.c` 실행 결과
 ```bash
 ubuntug@ubuntug:~/c_c++/Tcp:Ip/Ch3$ gcc endian_conv.c -o conv
 ubuntug@ubuntug:~/c_c++/Tcp:Ip/Ch3$ ./conv 
@@ -107,8 +142,19 @@ Network ordered address: 0x78563412
 ubuntug@ubuntug:~/c_c++/Tcp:Ip/Ch3$
 ```
 
-inet_addr.c
+## 4. 인터넷 주소의 초기화와 할당
 
+### ⦁ 문자열 정보를 네트워크 바이트 순서의 정수로 변환
+
+#### - inet_addr
+"211.214.107.99"와 같이 점이 찍힌 10진수로 표현된 문자열을 전달하면, 해당 문자열 정보를 참조해서 IP주소정보를 32비트 정수형으로 반환!
+```c
+#include <arpa/inet.h>
+
+in_addr_t inet_addr(const char * string);
+// -> 성공 시 빅 엔디안으로 변환된 32비트 정수 값, 실패 시 INADDR_NONE 반환
+```
+- `inet_addr.c` 실행 결과
 ```bash
 ubuntug@ubuntug:~/c_c++/Tcp:Ip/Ch3$ gcc inet_addr.c -o addr
 ubuntug@ubuntug:~/c_c++/Tcp:Ip/Ch3$ ./addr 
@@ -117,7 +163,17 @@ Error occureded
 ubuntug@ubuntug:~/c_c++/Tcp:Ip/Ch3$
 ```
 
-inet_aton.c
+#### - inet_aton
+기능상으로 inet_addr 함수와 동일하나 in_addr형 구조체 변수에 변환의 결과가 저장된다는 점에서 차이가 있다.
+```c
+#include <arpa/inet.h>
+
+int inet_aton(const char * string, struct in_addr * addr);
+// -> 성공 시 1(true), 실패 시 0(false) 반환
+// string : 변환할 IP주소 정보를 담고 있는 문자열의 주소 값 전달.
+// addr : 변환된 정보를 저장할 in_addr 구조체 변수의 주소 값 전달.
+```
+- `inet_aton.c` 실행 결과
 ```bash
 ubuntug@ubuntug:~/c_c++/Tcp:Ip/Ch3$ gcc inet_aton.c -o aton
 ubuntug@ubuntug:~/c_c++/Tcp:Ip/Ch3$ ./aton 
@@ -125,7 +181,16 @@ Network ordered integer addr: 0x4f7ce87f
 ubuntug@ubuntug:~/c_c++/Tcp:Ip/Ch3$ 
 ```
 
-inet_ntoa.c
+#### - inet_nota
+inet_aton 함수의 반대기능 제공.
+네트워크 바이트 순서로 정렬된 정수형 IP주소 정보를 우리가 눈으로 쉽게 인식할 수 있는 문자열의 형태로 변환.
+```c
+#include <arpa/inet.h>
+
+char * inet_ntoa(struct in_addr adr);
+// -> 성공 시 변환된 문자열의 주소 값, 실패 시 -1 반환
+```
+- `inet_ntoa.c` 실행 결과
 ```bash
 ubuntug@ubuntug:~/c_c++/Tcp:Ip/Ch3$ gcc inet_ntoa.c -o ntoa
 ubuntug@ubuntug:~/c_c++/Tcp:Ip/Ch3$ ./ntoa 
@@ -133,4 +198,66 @@ Dotted-Decimal notation1: 1.2.3.4
 Dotted-Decimal notation2: 1.1.1.1 
 Dotted-Decimal notation3: 1.2.3.4 
 ubuntug@ubuntug:~/c_c++/Tcp:Ip/Ch3$ 
+```
+
+### ⦁ 인터넷 주소의 초기화
+
+- 일반적인 인터넷 주소의 초기화 과정
+```c
+struct sockaddr_in addr;
+char *serv_ip = "211.217.168.13"; // IP주소 문자열 선언
+char *serv_port = "9190" // PORT번호 문자열 선언
+memset(&addr, 0, sizeof(addr)); // 구조체 변수 addr의 모든 멤버 0으로 초기화
+addr.sin_family=AF_INET; // 주소체계 지정
+addr.sin_addr.s_addr=inet_addr(serv_ip); // 문자열 기반의 IP주소 초기화
+addr.sin_port=htons(atoi(serv_port)); // 문자열 기반의 PORT번호 초기화
+```
+
+### ⦁ INADDR_ANY
+현재 실행중인 컴퓨터의 IP소켓에 부여할 때 사용되는 것이 INADDR_ANY이다.
+이는 서버 프로그램의 구현에 주로 사용된다.
+```c
+struct sockaddr_in addr;
+char *serv_port = "9190";
+memset(&addr, 0, sizeof(addr));
+addr.sin_family=AF_INET;
+addr.sin_addr.s_addr=htonl(INADDR_ANY);
+addr.sin_port=htons(atoi(serv_port));
+```
+
+### ⦁ Ch1의 예제 실행방식의 고찰
+
+- [./hello_server 5000](../Ch1/README.md#--예제의-실행결과)
+서버의 실행방식, 서버의 리스닝 소켓 주소는 INADDR_ANY로 지정을 하니, 소켓의 PORT번호만 인자를 통해 전달하면 된다.
+
+- [./hello_client 127.0.0.1 5000](../Ch1/README.md#--예제의-실행결과)
+
+### ⦁ 소켓에 인터넷 주소 할당하기
+```c
+#include <sys/socket.h>
+
+int bind(int sockfd, struct sockaddr *myaddr, socklen_t addrlen);
+// -> 성공 시 0, 실패 시 -1 반환
+// sockfd 주소정보를(IP와 PORT를) 할당한 소켓의 디스크립터.
+// myaddr 할당하고자 하는 주소정보를 지니는 구조체 변수의 주소 값.
+// addrlen 두 번째 인자로 전달된 구조체 변수의 길이정보.
+```
+
+- 서버프로그램에서의 일반적인 주소할당의 과정
+```c
+int serv_sock;
+struct sockaddr_in serv_addr;
+char *serv_port="5000"
+
+/* 서버 소켓(리스닝 소켓) 생성 */
+serv_sock = socket(PF_INET, SOCK_STREAM, 0);
+
+/* 주소정보 초기화 */
+memset(&serv_addr, 0, sizeof(serv_addr));
+serv_addr.sin_family = AF_INET;
+serv_addr.sin_addr.s_addr = htonl(INADDR_ANY);
+serv_addr.sin_port = htons(atoi(serv_port));
+
+/* 주소정보 할당 */
+bind(serv_sock, (struct sockaddr*)&serv_addr, sizeof(serv_addr));
 ```

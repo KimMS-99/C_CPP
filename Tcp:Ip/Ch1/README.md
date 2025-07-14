@@ -97,13 +97,13 @@ int connect(int sockfd, struct sockaddr *serv_addr, socklen_t addrlen);
 
 #### - 예제의 실행결과
 
-+ ***hello_server.c*** 실행 결과
++ `hello_server.c` 실행 결과
 ```bash
 ubuntug@ubuntug:~/c_c++/Tcp:Ip/Ch1$ gcc hello_server.c -o hello_server
 ubuntug@ubuntug:~/c_c++/Tcp:Ip/Ch1$ ./hello_server 5000
 ```
 
-+ ***hello_client.c*** 실행 결과
++ `hello_client.c` 실행 결과
 ```bash
 ubuntug@ubuntug:~/c_cpp/tcpip/Ch1$ gcc hello_client.c -o hello_client
 ubuntug@ubuntug:~/c_cpp/tcpip/Ch1$ ./hello_client 127.0.0.1 5000
@@ -193,7 +193,7 @@ ssize_t write(int fd, const void *buf, size_t nbytes);
 // nbytes : 전송할 데이터의 바이트 수 전달.
 ```
 
-+ ***low_read.c*** 실행 결과
++ `low_read.c` 실행 결과
 ```c
 ubuntug@ubuntug:~/c_c++/Tcp:Ip/Ch1$ gcc low_read.c -o lread
 ubuntug@ubuntug:~/c_c++/Tcp:Ip/Ch1$ ./lread 
@@ -204,7 +204,7 @@ ubuntug@ubuntug:~/c_c++/Tcp:Ip/Ch1$
 
 ### ⦁ 파일 디스크립터와 소켓
 
-+ ***fd_seri.c*** 실행 결과
++ `fd_seri.c` 실행 결과
 ```c
 ubuntug@ubuntug:~/c_c++/Tcp:Ip/Ch1$ gcc fd_seri.c -o fds
 ubuntug@ubuntug:~/c_c++/Tcp:Ip/Ch1$ ./fds 
