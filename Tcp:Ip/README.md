@@ -1,4 +1,5 @@
 # Tcp/Ip
+Ubuntu, Raspberry Pi OS 환경에서 실습 및 테스트하였습니다.
 
 ## 목차
 
